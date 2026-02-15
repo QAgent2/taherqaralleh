@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>المحامي طاهر القراله | مكتب محاماة</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Tajawal:wght@200;300;400;500;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Cinzel:wght@400;600;700;900&display=swap');
+
+:root{
+  /* Ultra Luxury Color Palette */
+  --primary:#8B5A3C;
+  --primary-light:#B8896B;
+  --primary-dark:#5D3A28;
+  --accent:#D4AF37;
+  --accent-light:#F4E4A6;
+  --accent-dark:#B8941F;
+  --bg-deep:#0A0908;
+  --bg-dark:#1A1614;
+  --bg-card:#251F1C;
+  --bg-elevated:#2F2724;
+  --text-primary:#F5F1E8;
+  --text-secondary:#C9BDB1;
+  --text-muted:#8A7F75;
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg-deep);
+  color:var(--text-primary);
+  font-family:'Tajawal',system-ui,sans-serif;
+  font-weight:300;
+  overflow-x:hidden;
+  position:relative;
+  line-height:1.8;
+  letter-spacing:0.02em;
+}
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(212,175,55,.02) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(139,90,60,.03) 0%, transparent 50%),
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4af37' fill-opacity='0.030'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events:none;
+  z-index:0;
+  opacity:.3;
+}
+body > *{position:relative;z-index:1}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--bg-deep)}
+::-webkit-scrollbar-thumb{background:var(--primary-dark)}
+
+/* Typography Enhancement */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Amiri', 'Cormorant Garamond', Georgia, serif;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+}
+
+p, li, span {
+  font-family: 'Tajawal', system-ui, sans-serif;
+  font-weight: 400;
+  line-height: 1.9;
+  letter-spacing: 0.015em;
+}
+
+/* LOADER */
+#loader{
+  position:fixed;
+  inset:0;
+  z-index:9000;
+  background:var(--bg-deep);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:20px;
+  transition:opacity .8s ease,visibility .8s ease;
+}
+#loader.hide{opacity:0;visibility:hidden;pointer-events:none}
+.ld-logo{
+  font-family:'Cinzel',Georgia,serif;
+  font-size:40px;
+  font-weight:700;
+  color:var(--accent);
+  letter-spacing:.3em;
+  animation:pulse 1.5s ease-in-out infinite;
+}
+.ld-bar{width:180px;height:1px;background:var(--bg-card);overflow:hidden}
+.ld-bar::after{content:'';display:block;height:100%;background:var(--accent);animation:fill 2s ease forwards}
+@keyframes fill{from{width:0}to{width:100%}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* NAV */
+nav{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:100;
+  padding:24px 60px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  transition:all .5s ease;
+}
+nav.sc{
+  padding:14px 60px;
+  background:rgba(10,9,8,.95);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(212,175,55,.30);
+  box-shadow:0 4px 24px rgba(0,0,0,.2);
+}
+.nav-logo{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  text-decoration:none;
+  color:inherit;
+  cursor:pointer;
+}
+.nav-emblem{
+  width:44px;
+  height:44px;
+  border:1px solid var(--accent);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:'Cinzel',Georgia,serif;
+  font-size:30px;
+  font-weight:700;
+  color:var(--accent);
+  transition:all .3s;
+  flex-shrink:0;
+  position:relative;
+  box-shadow:0 0 20px rgba(212,175,55,.2);
+}
+.nav-emblem::before{
+  content:'';
+  position:absolute;
+  inset:3px;
+  border:1px solid rgba(212,175,55,.25);
+}
+.nav-emblem:hover{
+  background:linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+  color:var(--bg-deep);
+  box-shadow:0 0 30px rgba(212,175,55,.4);
+}
+.firm-n{
+  font-family:'Cinzel',Georgia,serif;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.18em;
+  color:var(--text-primary);
+  display:block;
+}
+.firm-s{
+  font-size:9px;
+  letter-spacing:.35em;
+  color:var(--accent);
+  text-transform:uppercase;
+  display:block;
+  margin-top:2px;
+}
+.nav-links{display:flex;align-items:center;gap:36px}
+.nl{
+  font-size:10px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--text-secondary);
+  background:none;
+  border:none;
+  font-family:'Tajawal',sans-serif;
+  cursor:pointer;
+  position:relative;
+  padding-bottom:4px;
+  transition:color .3s;
+}
+.nl::after{
+  content:'';
+  position:absolute;
+  bottom:0;
+  right:0;
+  width:0;
+  height:1px;
+  background:var(--accent);
+  transition:width .4s ease;
+}
+.nl:hover{color:var(--accent)}
+.nl:hover::after{width:100%}
+.lang-btn{
+  font-size:10px;
+  letter-spacing:.25em;
+  color:var(--text-muted);
+  background:none;
+  border:none;
+  cursor:pointer;
+  font-family:'Tajawal',sans-serif;
+  transition:color .3s;
+  padding:4px 6px;
+}
+.lang-btn:hover{color:var(--accent)}
+.nav-cta{
+  padding:11px 26px;
+  border:1px solid var(--accent);
+  font-size:10px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--accent);
+  background:transparent;
+  cursor:pointer;
+  font-family:'Tajawal',sans-serif;
+  transition:all .3s;
+  position:relative;
+  overflow:hidden;
+}
+.nav-cta::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:var(--accent);
+  transform:translateY(101%);
+  transition:transform .35s ease;
+}
+.nav-cta span{position:relative;z-index:1}
+.nav-cta:hover::before{transform:translateY(0)}
+.nav-cta:hover{color:var(--bg-deep)}
+.hbg{
+  display:none;
+  flex-direction:column;
+  gap:6px;
+  background:none;
+  border:none;
+  cursor:pointer;
+  padding:4px;
+}
+.hbg span{
+  display:block;
+  width:28px;
+  height:1px;
+  background:var(--accent);
+  transition:all .4s;
+}
+.mob-menu{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:80;
+  background:var(--bg-deep);
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:32px;
+}
+.mob-menu.open{display:flex}
+.mob-close{
+  position:absolute;
+  top:28px;
+  left:28px;
+  background:none;
+  border:none;
+  color:var(--accent);
+  font-size:26px;
+  cursor:pointer;
+}
+
+/* HERO */
+#hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+  padding:120px 60px 80px;
+}
+.h-bg{position:absolute;inset:0}
+.h-grid{
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(212,175,55,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(212,175,55,.025) 1px,transparent 1px);
+  background-size:80px 80px;
+}
+.h-vig{
+  position:absolute;
+  inset:0;
+  background:radial-gradient(ellipse 80% 80% at 50% 50%,transparent 20%,var(--bg-deep) 100%);
+}
+.h-glow{
+  position:absolute;
+  top:20%;
+  left:50%;
+  transform:translateX(-50%);
+  width:600px;
+  height:600px;
+  background:radial-gradient(circle,rgba(212,175,55,.05) 0%,transparent 70%);
+  pointer-events:none;
+}
+.h-line-l{
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:30%;
+  width:1px;
+  background:linear-gradient(to bottom,transparent,rgba(212,175,55,.08),transparent);
+}
+.h-line-r{
+  position:absolute;
+  top:0;
+  bottom:0;
+  right:30%;
+  width:1px;
+  background:linear-gradient(to bottom,transparent,rgba(212,175,55,.08),transparent);
+}
+.h-content{
+  position:relative;
+  z-index:2;
+  text-align:center;
+  max-width:1100px;
+  width:100%;
+}
+.h-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:44px;
+  padding:10px 24px;
+  border:1px solid rgba(212,175,55,.22);
+  color:var(--accent);
+  font-size:10px;
+  letter-spacing:.35em;
+  text-transform:uppercase;
+  background:rgba(212,175,55,.03);
+  opacity:0;
+  animation:fU .9s ease .3s forwards;
+  font-family:'Tajawal',sans-serif;
+}
+.h-dot{
+  width:4px;
+  height:4px;
+  background:var(--accent);
+  border-radius:50%;
+  animation:blink 2s ease infinite;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.30}}
+.h-name{
+  font-family:'Amiri',Georgia,serif;
+  font-size:clamp(52px,9vw,118px);
+  font-weight:700;
+  line-height:.95;
+  color:var(--text-primary);
+  letter-spacing:.02em;
+  opacity:0;
+  animation:fU .9s ease .6s forwards;
+  display:block;
+}
+.h-name em{
+  font-style:italic;
+  background:linear-gradient(135deg, var(--accent-light) 0%, var(--accent) 50%, var(--accent-dark) 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  text-shadow:0 0 40px rgba(212,175,55,.3);
+}
+.h-divider{
+  width:80px;
+  height:1px;
+  background:linear-gradient(to right,transparent,var(--accent),transparent);
+  margin:28px auto;
+  opacity:0;
+  animation:fU .9s ease .9s forwards;
+}
+.h-tag{
+  font-size:clamp(14px,1.6vw,19px);
+  color:var(--text-secondary);
+  font-weight:400;
+  line-height:1.85;
+  max-width:560px;
+  margin:0 auto;
+  opacity:0;
+  animation:fU .9s ease 1.1s forwards;
+  font-family:'Tajawal',sans-serif;
+}
+.h-ctas{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:28px;
+  margin-top:52px;
+  flex-wrap:wrap;
+  opacity:0;
+  animation:fU .9s ease 1.3s forwards;
+}
+.btn-g{
+  padding:17px 46px;
+  background:linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+  color:var(--bg-deep);
+  font-size:10px;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  border:none;
+  cursor:pointer;
+  font-family:'Tajawal',sans-serif;
+  font-weight:700;
+  transition:all .35s;
+  position:relative;
+  overflow:hidden;
+  box-shadow:0 8px 24px rgba(212,175,55,.25);
+}
+.btn-g::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg, var(--accent-light) 0%, var(--accent) 100%);
+  transform:scaleX(0);
+  transform-origin:right;
+  transition:transform .35s ease;
+}
+.btn-g:hover{
+  box-shadow:0 12px 32px rgba(212,175,55,.4);
+  transform:translateY(-2px);
+}
+.btn-g:hover::after{transform:scaleX(1)}
+.btn-g span{position:relative;z-index:1}
+.btn-ghost{
+  font-size:10px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--text-muted);
+  background:none;
+  border:none;
+  cursor:pointer;
+  font-family:'Tajawal',sans-serif;
+  transition:color .3s;
+}
+.btn-ghost:hover{color:var(--text-primary)}
+.scr-ind{
+  position:absolute;
+  bottom:36px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:6px;
+  opacity:0;
+  animation:fIn .8s ease 2s forwards;
+  z-index:2;
+}
+.scr-ind span{
+  font-size:9px;
+  letter-spacing:.4em;
+  color:var(--text-muted);
+  text-transform:uppercase;
+}
+.scr-line{
+  width:1px;
+  height:44px;
+  background:linear-gradient(to bottom,var(--accent),transparent);
+  animation:scrl 2s ease infinite;
+}
+@keyframes scrl{
+  0%{transform:scaleY(0);transform-origin:top}
+  50%{transform:scaleY(1);transform-origin:top}
+  51%{transform:scaleY(1);transform-origin:bottom}
+  100%{transform:scaleY(0);transform-origin:bottom}
+}
+@keyframes fU{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fIn{from{opacity:0}to{opacity:1}}
+
+/* STATS */
+#stats{
+  padding:100px 60px;
+  background:var(--bg-card);
+  border-top:1px solid rgba(212,175,55,.08);
+  border-bottom:1px solid rgba(212,175,55,.08);
+}
+.st-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:50px;
+  max-width:1200px;
+  margin:0 auto;
+}
+.st-card{
+  text-align:center;
+  padding:32px 20px;
+  border:1px solid rgba(212,175,55,.10);
+  background:var(--bg-elevated);
+  transition:all .4s;
+  position:relative;
+  overflow:hidden;
+}
+.st-card::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at center,rgba(212,175,55,.05),transparent 70%);
+  opacity:0;
+  transition:opacity .4s;
+}
+.st-card:hover::before{opacity:1}
+.st-card:hover{
+  transform:translateY(-6px);
+  background:radial-gradient(circle at center,rgba(212,175,55,.06),var(--bg-elevated));
+  box-shadow:0 12px 32px rgba(0,0,0,.3);
+}
+.st-num{
+  font-size:52px;
+  font-weight:700;
+  background:linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  margin-bottom:12px;
+  display:block;
+  font-family:'Cinzel',Georgia,serif;
+}
+.st-label{
+  font-size:12px;
+  letter-spacing:.25em;
+  color:var(--text-secondary);
+  text-transform:uppercase;
+  font-family:'Tajawal',sans-serif;
+  font-weight:500;
+}
+
+/* ABOUT */
+#about{padding:140px 60px;background:var(--bg-deep)}
+.ab-wrap{
+  max-width:1400px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:center;
+}
+.ab-img-wrap{
+  position:relative;
+  width:100%;
+  height:600px;
+}
+.ab-frame{
+  position:absolute;
+  inset:0;
+  border:1px solid rgba(212,175,55,.22);
+  z-index:2;
+  pointer-events:none;
+}
+.ab-frame::before{
+  content:'';
+  position:absolute;
+  inset:8px;
+  border:1px solid rgba(212,175,55,.12);
+}
+.ab-img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  position:relative;
+  z-index:1;
+  filter:sepia(15%) contrast(1.05) brightness(0.98);
+}
+.ab-glow{
+  position:absolute;
+  inset:-40px;
+  background:radial-gradient(circle at center,rgba(212,175,55,.08),transparent 60%);
+  z-index:0;
+}
+.ab-content{position:relative}
+.ab-label{
+  font-size:11px;
+  letter-spacing:.35em;
+  color:var(--accent);
+  text-transform:uppercase;
+  margin-bottom:22px;
+  display:block;
+  font-family:'Tajawal',sans-serif;
+  font-weight:600;
+}
+.ab-title{
+  font-size:clamp(32px,4.5vw,56px);
+  font-weight:700;
+  line-height:1.2;
+  color:var(--text-primary);
+  margin-bottom:28px;
+  font-family:'Amiri',Georgia,serif;
+}
+.ab-title span{
+  background:linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.ab-text{
+  font-size:17px;
+  line-height:1.95;
+  color:var(--text-secondary);
+  margin-bottom:24px;
+  font-family:'Tajawal',sans-serif;
+  font-weight:400;
+  letter-spacing:0.02em;
+}
+.ab-list{
+  list-style:none;
+  margin:32px 0;
+}
+.ab-list li{
+  padding:16px 0 16px 36px;
+  position:relative;
+  font-size:15px;
+  color:var(--text-secondary);
+  border-bottom:1px solid rgba(212,175,55,.06);
+  font-family:'Tajawal',sans-serif;
+  font-weight:400;
+  line-height:1.8;
+}
+.ab-list li::before{
+  content:'✓';
+  position:absolute;
+  right:0;
+  top:50%;
+  transform:translateY(-50%);
+  color:var(--accent);
+  font-size:18px;
+  font-weight:700;
+}
+.ab-list li:last-child{border-bottom:none}
+
+/* PRACTICE */
+#practice{
+  padding:140px 60px;
+  background:var(--bg-card);
+  border-top:1px solid rgba(212,175,55,.08);
+  border-bottom:1px solid rgba(212,175,55,.08);
+}
+.pr-header{
+  text-align:center;
+  max-width:800px;
+  margin:0 auto 80px;
+}
+.pr-label{
+  font-size:11px;
+  letter-spacing:.35em;
+  color:var(--accent);
+  text-transform:uppercase;
+  margin-bottom:22px;
+  display:block;
+  font-family:'Tajawal',sans-serif;
+  font-weight:600;
+}
+.pr-title{
+  font-size:clamp(32px,4.5vw,56px);
+  font-weight:700;
+  line-height:1.2;
+  color:var(--text-primary);
+  font-family:'Amiri',Georgia,serif;
+}
+.pr-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:32px;
+  max-width:1400px;
+  margin:0 auto;
+}
+.pr-card{
+  padding:40px 32px;
+  background:var(--bg-elevated);
+  border:1px solid rgba(212,175,55,.08);
+  transition:all .4s;
+  position:relative;
+  overflow:hidden;
+}
+.pr-card::before{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  width:100%;
+  height:3px;
+  background:linear-gradient(90deg, var(--accent) 0%, transparent 100%);
+  transform:scaleX(0);
+  transform-origin:right;
+  transition:transform .4s;
+}
+.pr-card:hover::before{transform:scaleX(1)}
+.pr-card:hover{
+  transform:translateY(-8px);
+  background:radial-gradient(circle at top right,rgba(212,175,55,.04),var(--bg-elevated));
+  box-shadow:0 16px 40px rgba(0,0,0,.3);
+}
+.pr-icon{
+  width:60px;
+  height:60px;
+  border:1px solid var(--accent);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  color:var(--accent);
+  margin-bottom:24px;
+  transition:all .4s;
+  background:rgba(212,175,55,.03);
+}
+.pr-card:hover .pr-icon{
+  background:var(--accent);
+  color:var(--bg-deep);
+  box-shadow:0 8px 24px rgba(212,175,55,.3);
+}
+.pr-name{
+  font-size:22px;
+  font-weight:700;
+  color:var(--text-primary);
+  margin-bottom:14px;
+  font-family:'Amiri',Georgia,serif;
+}
+.pr-desc{
+  font-size:15px;
+  line-height:1.8;
+  color:var(--text-secondary);
+  font-family:'Tajawal',sans-serif;
+  font-weight:400;
+}
+
+/* WHY */
+#why{padding:140px 60px;background:var(--bg-deep)}
+.wy-wrap{
+  max-width:1400px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:center;
+}
+.wy-content .ab-title{margin-bottom:36px}
+.wy-features{display:flex;flex-direction:column;gap:28px}
+.wy-feat{
+  padding:28px 32px;
+  background:var(--bg-card);
+  border:1px solid rgba(212,175,55,.08);
+  transition:all .4s;
+  cursor:pointer;
+  position:relative;
+  overflow:hidden;
+}
+.wy-feat::before{
+  content:'';
+  position:absolute;
+  right:0;
+  top:0;
+  width:3px;
+  height:100%;
+  background:var(--accent);
+  transform:scaleY(0);
+  transition:transform .4s;
+}
+.wy-feat:hover::before{transform:scaleY(1)}
+.wy-feat:hover{
+  transform:translateX(-8px);
+  background:radial-gradient(circle at right,rgba(212,175,55,.05),var(--bg-card));
+  box-shadow:0 8px 24px rgba(0,0,0,.2);
+}
+.wy-f-title{
+  font-size:20px;
+  font-weight:700;
+  color:var(--text-primary);
+  margin-bottom:10px;
+  font-family:'Amiri',Georgia,serif;
+}
+.wy-f-text{
+  font-size:15px;
+  line-height:1.8;
+  color:var(--text-secondary);
+  font-family:'Tajawal',sans-serif;
+  font-weight:400;
+}
+
+/* AI ADVISOR */
+#advisor{
+  padding:140px 60px;
+  background:var(--bg-card);
+  border-top:1px solid rgba(212,175,55,.08);
+  border-bottom:1px solid rgba(212,175,55,.08);
+  position:relative;
+}
+.adv-wrap{
+  max-width:900px;
+  margin:0 auto;
+  text-align:center;
+}
+.adv-label{
+  font-size:11px;
+  letter-spacing:.35em;
+  color:var(--accent);
+  text-transform:uppercase;
+  margin-bottom:22px;
+  display:block;
+  font-family:'Tajawal',sans-serif;
+  font-weight:600;
+}
+.adv-title{
+  font-size:clamp(32px,4.5vw,56px);
+  font-weight:700;
+  line-height:1.2;
+  color:var(--text-primary);
+  margin-bottom:20px;
+  font-family:'Amiri',Georgia,serif;
+}
+.adv-subtitle{
+  font-size:17px;
+  color:var(--text-secondary);
+  margin-bottom:50px;
+  line-height:1.8;
+  font-family:'Tajawal',sans-serif;
+  font-weight:400;
+}
+.adv-disclaimer{
+  background:rgba(212,175,55,.05);
+  border:1px solid rgba(212,175,55,.15);
+  border-radius:8px;
+  padding:16px 24px;
+  margin-bottom:40px;
+  text-align:center;
+}
+.adv-disclaimer-text{
+  font-size:13px;
+  color:var(--text-secondary);
+  line-height:1.7;
+  font-family:'Tajawal',sans-serif;
+  font-weight:500;
+}
+.adv-disclaimer-text strong{
+  color:var(--accent);
+  font-weight:700;
+}
+.adv-box{
+  background:var(--bg-elevated);
+  border:1px solid rgba(212,175,55,.12);
+  padding:50px;
+  box-shadow:0 20px 60px rgba(0,0,0,.3);
+}
+.adv-input-wrap{
+  display:flex;
+  gap:16px;
+  margin-bottom:32px;
+}
+.adv-input{
+  flex:1;
+  padding:18px 24px;
+  background:var(--bg-deep);
+  border:1px solid rgba(212,175,55,.15);
+  color:var(--text-primary);
+  font-size:15px;
+  font-family:'Tajawal',sans-serif;
+  transition:all .3s;
+  font-weight:400;
+}
+.adv-input::placeholder{color:var(--text-muted)}
+.adv-input:focus{
+  outline:none;
+  border-color:var(--accent);
+  box-shadow:0 0 20px rgba(212,175,55,.15);
+}
+.adv-btn{
+  padding:18px 40px;
+  background:linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+  color:var(--bg-deep);
+  border:none;
+  cursor:pointer;
+  font-size:11px;
+  letter-spacing:.25em;
+  text-transform:uppercase;
+  font-family:'Tajawal',sans-serif;
+  font-weight:700;
+  transition:all .3s;
+  box-shadow:0 8px 24px rgba(212,175,55,.25);
+}
+.adv-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 32px rgba(212,175,55,.4);
+}
+.adv-btn:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+}
+.adv-loader{
+  display:none;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  padding:28px;
+  color:var(--text-secondary);
+  font-size:14px;
+  font-family:'Tajawal',sans-serif;
+}
+.adv-spinner{
+  width:20px;
+  height:20px;
+  border:2px solid rgba(212,175,55,.2);
+  border-top-color:var(--accent);
+  border-radius:50%;
+  animation:spin 1s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.adv-result{
+  display:none;
+  padding:32px;
+  background:var(--bg-deep);
+  border:1px solid rgba(212,175,55,.15);
+  text-align:right;
+  margin-top:28px;
+}
+.adv-result-text{
+  font-size:15px;
+  line-height:1.95;
+  color:var(--text-primary);
+  white-space:pre-wrap;
+  font-family:'Tajawal',sans-serif;
+  font-weight:400;
+}
+
+/* CONTACT */
+#contact{padding:140px 60px;background:var(--bg-deep)}
+.ct-wrap{
+  max-width:1200px;
+  margin:0 auto;
+  text-align:center;
+}
+.ct-header{margin-bottom:70px}
+.ct-label{
+  font-size:11px;
+  letter-spacing:.35em;
+  color:var(--accent);
+  text-transform:uppercase;
+  margin-bottom:22px;
+  display:block;
+  font-family:'Tajawal',sans-serif;
+  font-weight:600;
+}
+.ct-title{
+  font-size:clamp(32px,4.5vw,56px);
+  font-weight:700;
+  color:var(--text-primary);
+  font-family:'Amiri',Georgia,serif;
+}
+.ct-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:32px;
+}
+.ct-card{
+  padding:40px 28px;
+  background:var(--bg-card);
+  border:1px solid rgba(212,175,55,.08);
+  transition:all .4s;
+  text-align:center;
+}
+.ct-card:hover{
+  transform:translateY(-6px);
+  background:radial-gradient(circle at center,rgba(212,175,55,.04),var(--bg-card));
+  box-shadow:0 12px 32px rgba(0,0,0,.2);
+}
+.ct-icon{
+  width:56px;
+  height:56px;
+  margin:0 auto 24px;
+  border:1px solid var(--accent);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:24px;
+  color:var(--accent);
+  background:rgba(212,175,55,.03);
+  transition:all .4s;
+}
+.ct-card:hover .ct-icon{
+  background:var(--accent);
+  color:var(--bg-deep);
+  box-shadow:0 8px 24px rgba(212,175,55,.3);
+}
+.ct-name{
+  font-size:18px;
+  font-weight:700;
+  color:var(--text-primary);
+  margin-bottom:12px;
+  font-family:'Amiri',Georgia,serif;
+}
+.ct-info{
+  font-size:15px;
+  color:var(--text-secondary);
+  line-height:1.8;
+  font-family:'Tajawal',sans-serif;
+  font-weight:400;
+}
+.ct-info a{
+  color:var(--accent);
+  text-decoration:none;
+  transition:color .3s;
+}
+.ct-info a:hover{color:var(--accent-light)}
+
+/* FOOTER */
+footer{
+  padding:80px 60px 40px;
+  background:var(--bg-card);
+  border-top:1px solid rgba(212,175,55,.08);
+}
+.ft-wrap{
+  max-width:1400px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:60px;
+  margin-bottom:60px;
+}
+.ft-brand{max-width:320px}
+.ft-logo-wrap{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:24px;
+}
+.ft-emblem{
+  width:50px;
+  height:50px;
+  border:1px solid var(--accent);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:'Cinzel',Georgia,serif;
+  font-size:32px;
+  font-weight:700;
+  color:var(--accent);
+  position:relative;
+  box-shadow:0 0 20px rgba(212,175,55,.2);
+}
+.ft-emblem::before{
+  content:'';
+  position:absolute;
+  inset:4px;
+  border:1px solid rgba(212,175,55,.25);
+}
+.ft-name{
+  font-family:'Cinzel',Georgia,serif;
+  font-size:18px;
+  font-weight:700;
+  letter-spacing:.15em;
+  color:var(--text-primary);
+}
+.ft-desc{
+  font-size:14px;
+  line-height:1.8;
+  color:var(--text-secondary);
+  margin-bottom:24px;
+  font-family:'Tajawal',sans-serif;
+  font-weight:400;
+}
+.ft-social{display:flex;gap:16px}
+.ft-social a{
+  width:40px;
+  height:40px;
+  border:1px solid rgba(212,175,55,.20);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--accent);
+  text-decoration:none;
+  transition:all .3s;
+  background:rgba(212,175,55,.03);
+  font-size:18px;
+}
+.ft-social a:hover{
+  background:var(--accent);
+  color:var(--bg-deep);
+  border-color:var(--accent);
+  box-shadow:0 4px 16px rgba(212,175,55,.3);
+}
+.ft-col h4{
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:.25em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:24px;
+  font-family:'Tajawal',sans-serif;
+}
+.ft-links{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+.ft-links a{
+  color:var(--text-secondary);
+  text-decoration:none;
+  font-size:14px;
+  transition:color .3s;
+  display:block;
+  font-family:'Tajawal',sans-serif;
+  font-weight:400;
+}
+.ft-links a:hover{color:var(--accent)}
+.ft-bottom{
+  padding-top:40px;
+  border-top:1px solid rgba(212,175,55,.08);
+  text-align:center;
+}
+.ft-copy{
+  font-size:12px;
+  color:var(--text-muted);
+  font-family:'Tajawal',sans-serif;
+  font-weight:400;
+}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .ab-wrap,.wy-wrap{grid-template-columns:1fr;gap:60px}
+  .ft-wrap{grid-template-columns:1fr 1fr;gap:50px}
+}
+@media(max-width:768px){
+  nav{padding:20px 30px}
+  nav.sc{padding:14px 30px}
+  .nav-links,.lang-btn,.nav-cta{display:none}
+  .hbg{display:flex}
+  #hero{padding:100px 30px 60px}
+  #stats,#about,#practice,#why,#advisor,#contact{padding:80px 30px}
+  footer{padding:60px 30px 30px}
+  .h-name{font-size:48px}
+  .st-grid{grid-template-columns:1fr;gap:28px}
+  .pr-grid{grid-template-columns:1fr;gap:24px}
+  .ct-grid{grid-template-columns:1fr;gap:24px}
+  .ft-wrap{grid-template-columns:1fr;gap:40px}
+  .adv-box{padding:32px 24px}
+  .adv-input-wrap{flex-direction:column}
+  .ab-img-wrap{height:400px}
+}
+
+/* REVEAL ANIMATION */
+.reveal{
+  opacity:0;
+  transform:translateY(40px);
+  transition:all .8s ease;
+}
+.reveal.active{
+  opacity:1;
+  transform:translateY(0);
+}
+</style>
+</head>
+<body>
+<!-- LOADER -->
+<div id="loader">
+  <div class="ld-logo">TQ</div>
+  <div class="ld-bar"></div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#hero" class="nav-logo">
+    <div class="nav-emblem">TQ</div>
+    <div>
+      <span class="firm-n">TAHER ALQARALEH</span>
+      <span class="firm-s">LAW FIRM</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <button class="nl" onclick="scrollToSection('#about')">عن المحامي</button>
+    <button class="nl" onclick="scrollToSection('#practice')">مجالات العمل</button>
+    <button class="nl" onclick="scrollToSection('#advisor')">المستشار الذكي</button>
+    <button class="nl" onclick="scrollToSection('#why')">لماذا نحن</button>
+    <button class="nl" onclick="scrollToSection('#contact')">تواصل</button>
+  </div>
+  <button class="lang-btn" onclick="toggleLang()">EN</button>
+  <a href="tel:+962795957075" class="nav-cta" style="text-decoration:none;"><span>استشارة مجانية</span></a>
+  <button class="hbg" onclick="toggleMob()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mobMenu">
+  <button class="mob-close" onclick="toggleMob()">✕</button>
+  <button class="nl" onclick="scrollToSection('#about');toggleMob()">عن المحامي</button>
+  <button class="nl" onclick="scrollToSection('#practice');toggleMob()">مجالات العمل</button>
+  <button class="nl" onclick="scrollToSection('#advisor');toggleMob()">المستشار الذكي</button>
+  <button class="nl" onclick="scrollToSection('#why');toggleMob()">لماذا نحن</button>
+  <button class="nl" onclick="scrollToSection('#contact');toggleMob()">تواصل</button>
+  <button class="lang-btn" onclick="toggleLang()" style="display: block; margin: 20px 0; font-size: 12px; padding: 12px 20px;">English</button>
+  <a href="tel:+962795957075" class="nav-cta" style="text-decoration:none;"><span>استشارة مجانية</span></a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="h-bg">
+    <div class="h-grid"></div>
+    <div class="h-vig"></div>
+    <div class="h-glow"></div>
+    <div class="h-line-l"></div>
+    <div class="h-line-r"></div>
+  </div>
+  <div class="h-content">
+    <div class="h-badge">
+      <div class="h-dot"></div>
+      <span>مكتب محاماة متخصص</span>
+    </div>
+    <h1 class="h-name">المحامي <em>طاهر القراله</em></h1>
+    <div class="h-divider"></div>
+    <p class="h-tag">خبرة قانونية متميزة في خدمة العدالة والدفاع عن الحقوق</p>
+    <div class="h-ctas">
+      <a href="tel:+962795957075" class="btn-g" style="text-decoration:none;display:inline-block;"><span>احجز استشارة</span></a>
+      <button class="btn-ghost" onclick="scrollToSection('#about')">اعرف المزيد</button>
+    </div>
+  </div>
+  <div class="scr-ind">
+    <span>تصفح</span>
+    <div class="scr-line"></div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section id="stats">
+  <div class="st-grid reveal">
+    <div class="st-card">
+      <span class="st-num" data-count="30">0</span>
+      <div class="st-label">سنوات خبرة</div>
+    </div>
+    <div class="st-card">
+      <span class="st-num" data-count="500">0</span>
+      <div class="st-label">قضية ناجحة</div>
+    </div>
+    <div class="st-card">
+      <span class="st-num" data-count="100">0</span>
+      <div class="st-label">نسبة النجاح</div>
+    </div>
+    <div class="st-card">
+      <span class="st-num" data-count="24">0</span>
+      <div class="st-label">دعم متواصل</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="ab-wrap reveal">
+    <div class="ab-img-wrap">
+      <div class="ab-glow"></div>
+      <img src="https://i.imgur.com/pETxbiN.jpeg" alt="المحامي طاهر القراله" class="ab-img">
+      <div class="ab-frame"></div>
+    </div>
+    <div class="ab-content">
+      <span class="ab-label">عن المحامي</span>
+      <h2 class="ab-title">المحامي <span>طاهر القراله</span></h2>
+      <p class="ab-text">
+        محامٍ متخصص بخبرة تمتد لأكثر من 30 عاماً في مجال القانون والمحاماة. خريج كلية الحقوق من الجامعة الأردنية، مكرس نفسه لتقديم أرقى الخدمات القانونية والدفاع عن حقوق موكليه بكل مهنية واحترافية.
+      </p>
+      <ul class="ab-list">
+        <li>خريج كلية الحقوق - الجامعة الأردنية</li>
+        <li>خبرة قانونية تمتد لأكثر من 30 عاماً</li>
+        <li>متخصص في القضايا المدنية والتجارية</li>
+        <li>سجل حافل من القضايا الناجحة</li>
+        <li>التزام بأعلى معايير المهنية والأخلاق</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PRACTICE -->
+<section id="practice">
+  <div class="pr-header reveal">
+    <span class="pr-label">مجالات الممارسة</span>
+    <h2 class="pr-title">الخدمات القانونية المتخصصة</h2>
+  </div>
+  <div class="pr-grid">
+    <div class="pr-card reveal">
+      <div class="pr-icon">⚖</div>
+      <h3 class="pr-name">القضايا المدنية</h3>
+      <p class="pr-desc">تمثيل قانوني شامل في جميع أنواع القضايا المدنية والتعاقدات</p>
+    </div>
+    <div class="pr-card reveal">
+      <div class="pr-icon">⚖️</div>
+      <h3 class="pr-name">القانون الجنائي</h3>
+      <p class="pr-desc">دفاع قانوني متخصص في القضايا الجنائية والجزائية</p>
+    </div>
+    <div class="pr-card reveal">
+      <div class="pr-icon">🏢</div>
+      <h3 class="pr-name">القانون التجاري</h3>
+      <p class="pr-desc">استشارات قانونية متخصصة للشركات والمنشآت التجارية</p>
+    </div>
+    <div class="pr-card reveal">
+      <div class="pr-icon">👨‍👩‍👧</div>
+      <h3 class="pr-name">قضايا الأحوال الشخصية</h3>
+      <p class="pr-desc">خدمات قانونية في قضايا الأسرة والأحوال الشخصية</p>
+    </div>
+    <div class="pr-card reveal">
+      <div class="pr-icon">🏗</div>
+      <h3 class="pr-name">القضايا العقارية</h3>
+      <p class="pr-desc">استشارات ومرافعات في القضايا العقارية والملكية</p>
+    </div>
+    <div class="pr-card reveal">
+      <div class="pr-icon">⚙</div>
+      <h3 class="pr-name">قضايا العمل</h3>
+      <p class="pr-desc">تمثيل العمال وأصحاب العمل في النزاعات العمالية</p>
+    </div>
+    <div class="pr-card reveal">
+      <div class="pr-icon">📜</div>
+      <h3 class="pr-name">الاستشارات القانونية</h3>
+      <p class="pr-desc">استشارات قانونية شاملة ومتخصصة في مختلف المجالات</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why">
+  <div class="wy-wrap reveal">
+    <div class="wy-content">
+      <span class="ab-label">لماذا تختارنا</span>
+      <h2 class="ab-title">نلتزم بتحقيق <span>أفضل النتائج</span></h2>
+      <p class="ab-text">نقدم خدمات قانونية متميزة تجمع بين الخبرة العميقة والاحترافية العالية</p>
+    </div>
+    <div class="wy-features">
+      <div class="wy-feat">
+        <h3 class="wy-f-title">خبرة قانونية عريقة</h3>
+        <p class="wy-f-text">أكثر من 30 عاماً من الخبرة القانونية المتخصصة في خدمتك</p>
+      </div>
+      <div class="wy-feat">
+        <h3 class="wy-f-title">احترافية عالية</h3>
+        <p class="wy-f-text">نلتزم بأعلى معايير المهنية والأخلاقيات القانونية</p>
+      </div>
+      <div class="wy-feat">
+        <h3 class="wy-f-title">نتائج مثبتة</h3>
+        <p class="wy-f-text">سجل حافل بالقضايا الناجحة ونسبة نجاح عالية</p>
+      </div>
+      <div class="wy-feat">
+        <h3 class="wy-f-title">دعم متواصل</h3>
+        <p class="wy-f-text">متاحون على مدار الساعة لخدمة موكلينا</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI ADVISOR -->
+<section id="advisor">
+  <div class="adv-wrap reveal">
+    <span class="adv-label">المستشار القانوني الذكي</span>
+    <h2 class="adv-title">احصل على استشارة أولية</h2>
+    <p class="adv-subtitle">مستشار قانوني ذكي يعمل بالذكاء الاصطناعي لتقديم إجابات أولية على استفساراتك</p>
+    
+    <div class="adv-disclaimer">
+      <p class="adv-disclaimer-text">
+        <strong>تنبيه هام:</strong> هذا المستشار الذكي مخصص للمعرفة البسيطة والاستشارات الأولية فقط. المعلومات المقدمة هي لأغراض إعلامية عامة ولا تشكل استشارة قانونية رسمية. لا يمكن الاعتماد عليه كبديل عن الاستشارة القانونية المباشرة من محامٍ مرخص. للحصول على استشارة قانونية دقيقة ومخصصة لحالتك، يرجى التواصل مع المحامي مباشرة.
+      </p>
+    </div>
+
+    <div class="adv-box">
+      <div class="adv-input-wrap">
+        <input type="text" class="adv-input" id="aiInp" placeholder="اكتب سؤالك القانوني هنا...">
+        <button class="adv-btn" id="aiSend" onclick="sendAI()">إرسال</button>
+      </div>
+      <div class="adv-loader" id="aiLoad">
+        <div class="adv-spinner"></div>
+        <span>جاري المعالجة...</span>
+      </div>
+      <div class="adv-result" id="aiRes">
+        <p class="adv-result-text" id="aiTxt"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="ct-wrap reveal">
+    <div class="ct-header">
+      <span class="ct-label">تواصل معنا</span>
+      <h2 class="ct-title">نحن هنا لمساعدتك</h2>
+    </div>
+    <div class="ct-grid">
+      <div class="ct-card">
+        <div class="ct-icon">📍</div>
+        <h3 class="ct-name">العنوان</h3>
+        <p class="ct-info">عمان - المدينة الرياضية - شارع الزمخشري - مجمع حميدان التجاري - عمارة رقم ١٢</p>
+      </div>
+      <div class="ct-card">
+        <div class="ct-icon">📞</div>
+        <h3 class="ct-name">الهاتف</h3>
+        <p class="ct-info"><a href="tel:+962795957075">0795957075</a></p>
+      </div>
+      <div class="ct-card">
+        <div class="ct-icon">✉</div>
+        <h3 class="ct-name">البريد الإلكتروني</h3>
+        <p class="ct-info"><a href="mailto:Tahirgaralleh@yahoo.com">Tahirgaralleh@yahoo.com</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-wrap">
+    <div class="ft-brand">
+      <div class="ft-logo-wrap">
+        <div class="ft-emblem">TQ</div>
+        <span class="ft-name">طاهر القراله</span>
+      </div>
+      <p class="ft-desc">مكتب محاماة متخصص يقدم خدمات قانونية متميزة بخبرة تمتد لأكثر من 30 عاماً</p>
+      <div class="ft-social">
+        <a href="https://www.facebook.com/share/1BT7B4qnyj/" target="_blank" aria-label="Facebook">f</a>
+      </div>
+    </div>
+    <div class="ft-col">
+      <h4>روابط سريعة</h4>
+      <ul class="ft-links">
+        <li><a href="#about">عن المحامي</a></li>
+        <li><a href="#practice">مجالات العمل</a></li>
+        <li><a href="#advisor">المستشار الذكي</a></li>
+        <li><a href="#why">لماذا نحن</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>الخدمات</h4>
+      <ul class="ft-links">
+        <li><a href="#practice">القضايا المدنية</a></li>
+        <li><a href="#practice">القانون الجنائي</a></li>
+        <li><a href="#practice">القانون التجاري</a></li>
+        <li><a href="#practice">الأحوال الشخصية</a></li>
+        <li><a href="#practice">القضايا العقارية</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>تواصل معنا</h4>
+      <ul class="ft-links">
+        <li><a href="#contact">عمان - المدينة الرياضية - مجمع حميدان التجاري</a></li>
+        <li><a href="tel:+962795957075">0795957075</a></li>
+        <li><a href="mailto:Tahirgaralleh@yahoo.com">Tahirgaralleh@yahoo.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <p class="ft-copy">© 2024 المحامي طاهر القراله. جميع الحقوق محفوظة</p>
+  </div>
+</footer>
+
+<script>
+var isAr = true;
+
+// NAV SCROLL
+window.addEventListener('scroll', function() {
+  var nav = document.getElementById('nav');
+  if (window.scrollY > 80) {
+    nav.classList.add('sc');
+  } else {
+    nav.classList.remove('sc');
+  }
+});
+
+// SCROLL TO
+function scrollToSection(id) {
+  document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+}
+
+// TOGGLE MOBILE MENU
+function toggleMob() {
+  document.getElementById('mobMenu').classList.toggle('open');
+}
+
+// TOGGLE LANGUAGE
+function toggleLang() {
+  isAr = !isAr;
+  alert('قريباً: ' + (isAr ? 'العربية' : 'English'));
+}
+
+// REVEAL ANIMATION
+var ro = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) {
+      e.target.classList.add('active');
+      ro.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(function(el) { ro.observe(el); });
+
+// COUNT-UP
+var counts = document.querySelectorAll('[data-count]');
+var co = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (!e.isIntersecting) return;
+    var el = e.target;
+    var target = parseInt(el.getAttribute('data-count'));
+    var isPercent = target === 100;
+    var frames = 90;
+    var step = target / frames;
+    var v = 0;
+    var timer = setInterval(function() {
+      v += step;
+      if (v >= target) {
+        el.textContent = target + (isPercent ? '%' : '+');
+        clearInterval(timer);
+      } else {
+        el.textContent = Math.floor(v) + (isPercent ? '%' : '+');
+      }
+    }, 16);
+    co.unobserve(el);
+  });
+}, { threshold: 0.5 });
+counts.forEach(function(el) { el.textContent = '0'; co.observe(el); });
+
+// AI ADVISOR
+async function sendAI() {
+  var inp = document.getElementById('aiInp');
+  var q = inp.value.trim();
+  if (!q) return;
+  var btn = document.getElementById('aiSend');
+  var ld = document.getElementById('aiLoad');
+  var res = document.getElementById('aiRes');
+  var txt = document.getElementById('aiTxt');
+  btn.disabled = true;
+  ld.style.display = 'flex';
+  res.style.display = 'none';
+  try {
+    var r = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 800,
+        messages: [{ role: 'user', content: 'أنت مساعد قانوني محترف لمكتب طاهر القراله للمحاماة في عمّان، الأردن. أجب بمهنية واحترافية. هذه استشارة أولية بسيطة فقط وليست استشارة قانونية رسمية. اللغة: ' + (isAr ? 'العربية' : 'الإنجليزية') + '. السؤال: ' + q }]
+      })
+    });
+    var d = await r.json();
+    txt.textContent = (d.content && d.content[0] && d.content[0].text) || 'عذراً، حدث خطأ. يرجى المحاولة لاحقاً.';
+  } catch (e) {
+    txt.textContent = 'عذراً، حدث خطأ في الاتصال. يرجى المحاولة لاحقاً.';
+  }
+  ld.style.display = 'none';
+  res.style.display = 'block';
+  btn.disabled = false;
+  inp.value = '';
+}
+
+// HIDE LOADER
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    document.getElementById('loader').classList.add('hide');
+  }, 500);
+});
+
+// Also hide loader after 2 seconds as backup
+setTimeout(function() {
+  document.getElementById('loader').classList.add('hide');
+}, 2000);
+</script>
+</body>
+</html>
